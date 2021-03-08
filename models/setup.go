@@ -7,7 +7,7 @@ import (
 // DB is going to be our data base
 var DB *gorm.DB
 
-// Post model only has id and body, these will be the posts that show up 
+// Post model  has id, body, and comments relationship  these will be the posts that show up 
 type Post struct {
 	gorm.Model
 	// id field is not needed if you dont put index on it, else it throws warning
@@ -34,6 +34,7 @@ func ConnectDB() {
     panic("Failed to connect to database!")
   }
 
+  // this line auto migrates the tables, makes whatever tables it needs to
   database.AutoMigrate(&Post{}, &Comment{}) 
   DB = database
 }
@@ -46,6 +47,7 @@ func SeedDB() {
 		DB.Create(&Post{Body: "does anyone know how to set up a golang backend?"})
 		DB.Create(&Post{Body: "This is totally the new FB!"})
     	DB.Create(&Comment{Body: "FIRST!", PostID: 1})
+    	DB.Create(&Comment{Body: "no clue man", PostID: 1})
 	}
 	
 }
