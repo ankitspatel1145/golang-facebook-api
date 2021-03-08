@@ -34,7 +34,7 @@ func main() {
 	router.HandleFunc("/comment/{id}", controllers.GetComment).Methods("GET")
 	router.HandleFunc("/post/{id}/comment", controllers.CreateComment).Methods("POST")
 	fmt.Println("server is running")
-	
+	// start server
 	log.Fatal(http.ListenAndServe(":3000", router))
 
 
