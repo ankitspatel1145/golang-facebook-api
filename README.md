@@ -20,6 +20,13 @@ from the root of the project run these commands:
 * ```/comment/{id}``` - "GET"
 * ```/post/{id}/comment``` - "POST"
 
+### Making a POST request
+When making a POST request to the server:
+1. Use Postman
+2. In the headers tab, set ```Content-Type``` to ```application/json```
+3. Pass in JSON for the payload under Body > raw
+
+
 ## Technical Specs
 It uses Gorilla mux for its routing
 
