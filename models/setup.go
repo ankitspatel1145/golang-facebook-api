@@ -4,8 +4,6 @@ import (
   "gorm.io/gorm"
   "gorm.io/driver/sqlite"
 )
-// DB is going to be our data base
-var DB *gorm.DB
 
 // Post model  has id, body, and comments relationship  these will be the posts that show up 
 type Post struct {
@@ -13,7 +11,7 @@ type Post struct {
 	// id field is not needed if you dont put index on it, else it throws warning
 	ID    uint   ` gorm:"index"`
 	Body  string  `json:"body"`
- 	Comments []Comment
+	Comments []Comment
 }
 
 // Comment model hash id, body, and a post that it belongs to
@@ -25,6 +23,8 @@ type Comment struct {
 	// Post	  Post
 }
 
+// DB is going to be our data base
+var DB *gorm.DB
 
 // ConnectDB will open a connection the a sqlite3 db that we define
 func ConnectDB() {

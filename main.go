@@ -24,6 +24,7 @@ func main() {
 	models.ConnectDB()
 
 	models.SeedDB()
+	
 	//define our endpoints and functions to run when we hit those endpoints
 
 	router.HandleFunc("/test", controllers.TestServer).Methods("GET")
