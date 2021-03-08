@@ -43,9 +43,15 @@ func CreateComment(input http.ResponseWriter, r *http.Request) {
 	// we get the post from the DB
 	var post models.Post
 	models.DB.First(&post, postID)
-	//create new comment in the db and set up relationship
-	models.DB.Create(&newComment)
-	models.DB.Model(&post).Association("Comment").Append(newComment)
-	// fmt.Println(newComment.PostID)
-	json.NewEncoder(input).Encode(newComment)
+
+	if post.ID == 0 {
+		json.NewEncoder(input).Encode("no post found")
+	} else {
+		//if parent post exists, then we create new comment in the db and set up relationship
+		models.DB.Create(&newComment)
+		models.DB.Model(&post).Association("Comment").Append(newComment)
+		// fmt.Println(newComment.PostID)
+		json.NewEncoder(input).Encode(newComment)
+	}
 }
+
