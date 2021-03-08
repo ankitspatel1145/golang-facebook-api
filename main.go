@@ -32,7 +32,7 @@ func main() {
 	router.HandleFunc("/posts", controllers.CreatePost).Methods("POST")
 
 	router.HandleFunc("/comment/{id}", controllers.GetComment).Methods("GET")
-	// router.HandleFunc("/post{id}/comment", createComment).Methods("POST")
+	router.HandleFunc("/post/{id}/comment", controllers.CreateComment).Methods("POST")
 	fmt.Println("server is running")
 	
 	log.Fatal(http.ListenAndServe(":3000", router))

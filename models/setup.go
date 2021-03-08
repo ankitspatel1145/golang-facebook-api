@@ -28,7 +28,7 @@ type Comment struct {
 
 // ConnectDB will open a connection the a sqlite3 db that we define
 func ConnectDB() {
-  database, err := gorm.Open(sqlite.Open("facebookapi2.db"), &gorm.Config{})
+  database, err := gorm.Open(sqlite.Open("facebookapi.db"), &gorm.Config{})
 
   if err != nil {
     panic("Failed to connect to database!")
