@@ -44,7 +44,7 @@ Comments
     PostId
     body
 ```
-## You have can do the following:
+## You can do the following:
 - Create a post
 - View a specific post (along with all comments of that post)
 - Create a comment (must be on an exisiting parent post)
